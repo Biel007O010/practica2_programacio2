@@ -6,13 +6,17 @@ public abstract class Allotjament implements InAllotjament{
     private String id;
     private long estadaMinimaALTA;
     private long estadaMinimaBAIXA;
+    private boolean operatiu;
+    private String iluminacio;
 
     //Constructor:
-    public Allotjament(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_){
+    public Allotjament(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, boolean operatiu_, String iluminacio_){
         this.nom = nom;
         this.id = id;
         this.estadaMinimaALTA = estadaMinimaALTA_;
         this.estadaMinimaBAIXA = estadaMinimaBAIXA_;
+        this.operatiu = operatiu_;
+        this.iluminacio = iluminacio_;
     }
 
     public String getNom(){return nom;};
@@ -39,5 +43,34 @@ public abstract class Allotjament implements InAllotjament{
     @Override
     public String toString() {
         return "Nom=" + nom + ", Id=" + id + ", estada mínima en temp ALTA: " + estadaMinimaALTA + ", estada mínima en temp BAIXA: " + estadaMinimaBAIXA + ".";
+    }
+
+    public void tancarAllotjament(TascaManteniment tasca){
+        switch (tasca.getTipus()){
+            case Reparacio, RevisioTecnica:
+                this.iluminacio = "50%";
+                break;
+
+            case Neteja:
+                this.iluminacio = "100%";
+                break;
+
+            case Desinfeccio:
+                this.iluminacio = "0%";
+                break;
+        }
+    }
+
+    public void obrirAllotjament(){
+        this.operatiu = true;
+        this.iluminacio = "100%";
+    }
+
+    public boolean isOperatiu(){
+        return operatiu;
+    }
+
+    public String getIluminacio(){
+        return iluminacio;
     }
 }
