@@ -3,11 +3,11 @@ package prog2.model;
 import java.time.LocalDate;
 
 public class TascaManteniment implements InTascaManteniment{
-    //Atributs:
+
     public static enum TipusTascaManteniment{
         Reparacio, Neteja, RevisioTecnica, Desinfeccio,
     }
-
+    //Atributs:
     private int numId;
     private Allotjament allotjament;
     private int DuradaDies;
@@ -21,6 +21,7 @@ public class TascaManteniment implements InTascaManteniment{
         this.allotjament = allotjament_;
         this.data = data_;
         this.DuradaDies = duradaDies_;
+        allotjament.tancarAllotjament(this);
     }
 
     public int getNum(){
@@ -67,7 +68,7 @@ public class TascaManteniment implements InTascaManteniment{
         return allotjament.getIluminacio();
     }
 
-    public void String(){
-        System.out.println("El allotjament amb Id: " + allotjament.getId() + " està en manteniment de " + tipus + " durante " + DuradaDies);
+    public String toString(){
+        return "\n La tasca amb numId: " + numId + " del allotjament amd Id: " + allotjament.getId() + " està en manteniment de " + tipus + " durante " + DuradaDies;
     }
 }
