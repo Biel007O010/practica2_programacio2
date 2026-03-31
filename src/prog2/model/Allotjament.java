@@ -59,6 +59,7 @@ public abstract class Allotjament implements InAllotjament{
                 this.iluminacio = "0%";
                 break;
         }
+        this.operatiu = false;
     }
 
     public void obrirAllotjament(){
