@@ -5,9 +5,9 @@ package prog2.vista;
  *
  * @author lauraigual
  */
-public class ExcepcioReserva extends Exception {
+public class ExcepcioCamping extends Exception {
 
-    public ExcepcioReserva(String message) {
+    public ExcepcioCamping(String message) {
         super(message);
     }
     
