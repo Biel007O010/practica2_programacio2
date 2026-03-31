@@ -7,6 +7,8 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
 
     private ArrayList<TascaManteniment> llistaTasques;
 
+    //FALTA EL CONSTRUCTOR!!!
+
     public void afegirTascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) throws ExcepcioCamping {
 
         if (!allotjament.isOperatiu()) {
