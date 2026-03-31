@@ -50,9 +50,10 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
         }
     }
 
-    public TascaManteniment getTascaManteniment(int num) throws ExcepcioCamping{
-        for(TascaManteniment e : llistaTasques){
-            if(e.getNum() == num){
+    public TascaManteniment getTascaManteniment(int num) throws ExcepcioCamping {
+
+        for (TascaManteniment e : llistaTasques) {
+            if (e.getNum() == num) {
                 return e;
             }
         }
