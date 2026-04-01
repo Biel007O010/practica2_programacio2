@@ -7,18 +7,18 @@ public abstract class Acces implements InAcces {
     private String nom;
     private String accessibilitat;
     private boolean estat;
-    private ArrayList<LlistaAllotjaments> llista;
+    private LlistaAllotjaments llista;
 
     //Constructor
     public Acces(String _nom, String _accessibilitat, boolean _estat){
         this.nom = _nom;
         this.accessibilitat = _accessibilitat;
         this.estat = _estat;
-        this.llista = new ArrayList<>();
+        this.llista = new LlistaAllotjaments();
     }
     @Override
     public void afegirAllotjament(Allotjament allotjament) {
-        this.llista.add(allotjament);
+        this.llista.afegirAllotjament(allotjament);
     }
 
     @Override

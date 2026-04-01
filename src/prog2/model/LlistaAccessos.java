@@ -58,24 +58,32 @@ public class LlistaAccessos implements InLlistaAccessos{
         while (itr2.hasNext()){
             Acces accessos = itr2.next();
             LlistaAllotjaments llista = accessos.getAAllotjaments();
-            Iterator<Allotjament> all = llista.iterator();
-            while (all.hasNext()){
-                Allotjament a = all.next();
-                if(a.isOperatiu()){
-                    accessos.obrirAcces();
-                    break;
-                }
+            if (llista.containsAllotjamentOperatiu()){
+                accessos.obrirAcces();
             }
         }
     }
 
     @Override
-    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
-        return 0;
+    public int calculaAccessosNoAccessibles() throws ExcepcioCamping{
+        int noAccess = 0;
+        for(Acces tmp: this.llistaAcc){
+            if (tmp instanceof CamiTerra || tmp instanceof CamiAsfalt){
+                noAccess++;
+            }
+        }
+        return noAccess;
     }
 
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
-        return 0;
+        float metres = 0;
+        for (Acces tmp: this.llistaAcc){
+            if (tmp instanceof AccesTerra){
+                AccesTerra a = (AccesTerra) tmp;
+                metres += (float) a.getLongitud();
+            }
+        }
+        return metres;
     }
 }
