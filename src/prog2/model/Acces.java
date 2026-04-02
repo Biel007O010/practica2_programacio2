@@ -24,7 +24,7 @@ public abstract class Acces implements InAcces, Serializable {
         try {
             this.llista.afegirAllotjament(allotjament);
         } catch (ExcepcioCamping e) {
-            System.err.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
