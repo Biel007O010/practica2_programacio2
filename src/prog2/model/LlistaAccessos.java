@@ -16,7 +16,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
     }
 
     @Override
-    public void afegirAcces(Acces acc) throws ExcepcioCamping {
+    public void afegirAcces(Acces acc){
         this.llistaAcc.add(acc);
     }
 

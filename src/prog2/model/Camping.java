@@ -31,10 +31,10 @@ public class Camping implements InCamping, Serializable {
     @Override
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
         boolean estat;
-        if (infoEstat.equals("Obert")){
+        if (infoEstat.equals("Oberts")){
             estat = true;
         }
-        else if(infoEstat.equals("Tancat")){
+        else if(infoEstat.equals("Tancats")){
             estat = false;
         }
         else {
@@ -61,12 +61,12 @@ public class Camping implements InCamping, Serializable {
     }
 
     @Override
-    public int calculaAccessosNoAccessibles() {
+    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         return this.accessos.calculaAccessosNoAccessibles();
     }
 
     @Override
-    public float calculaMetresTerra() {
+    public float calculaMetresTerra() throws ExcepcioCamping {
         return this.accessos.calculaMetresTerra();
     }
 
@@ -99,7 +99,7 @@ public class Camping implements InCamping, Serializable {
     }
 
     @Override
-    public void inicialitzaDadesCamping() {
+    public void inicialitzaDadesCamping() throws ExcepcioCamping {
 
         accessos.buidar();
 

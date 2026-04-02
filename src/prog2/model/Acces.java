@@ -1,5 +1,7 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,7 +21,11 @@ public abstract class Acces implements InAcces, Serializable {
     }
     @Override
     public void afegirAllotjament(Allotjament allotjament) {
-        this.llista.afegirAllotjament(allotjament);
+        try {
+            this.llista.afegirAllotjament(allotjament);
+        } catch (ExcepcioCamping e) {
+            System.err.println(e);
+        }
     }
 
     @Override
