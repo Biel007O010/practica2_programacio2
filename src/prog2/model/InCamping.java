@@ -58,13 +58,13 @@ public interface InCamping {
      * Calcula el nombre d'accessos no accessibles al càmping.
      * @return El nombre d'accessos accessibles. (int)
      */
-    int calculaAccessosNoAccessibles() throws ExcepcioCamping;
+    int calculaAccessosNoAccessibles();
 
     /**
      * Calcula la quantitat total de metres dels accessos de terra.
      * @return La quantitat de metres. (float)
      */
-    float calculaMetresTerra() throws ExcepcioCamping;
+    float calculaMetresTerra();
 
     /**
      * Guarda l'estat actual del càmping en un fitxer.
