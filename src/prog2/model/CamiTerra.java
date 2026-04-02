@@ -1,9 +1,11 @@
 package prog2.model;
 
-public class CamiTerra extends AccesTerra{
+import java.io.Serializable;
+
+public class CamiTerra extends AccesTerra implements Serializable {
     //Constructor
     public CamiTerra(String _nom, String _accesibilitat, boolean _estat, float _longitud) {
-        super(_nom, "No", _estat, _longitud);
+        super(_nom, _accesibilitat, _estat, _longitud);
     }
 
     @Override

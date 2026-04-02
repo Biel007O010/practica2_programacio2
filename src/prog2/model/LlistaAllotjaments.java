@@ -2,10 +2,11 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LlistaAllotjaments implements InLlistaAllotjaments{
+public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
     //Atributs
     private ArrayList<Allotjament> llistaAll;
 
@@ -34,7 +35,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
                 allotjaments += num + ". " + tmp.toString() + "\n";
                 num++;
             }
-            else if (estat.equals("Tancat") && !tmp.isOperatiu()) {
+            else if (estat.equals("No operatiu") && !tmp.isOperatiu()) {
                 allotjaments += num + ". " + tmp.toString() + "\n";
                 num++;
             }

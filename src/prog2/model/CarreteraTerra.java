@@ -1,11 +1,13 @@
 package prog2.model;
 
-public class CarreteraTerra extends AccesTerra{
+import java.io.Serializable;
+
+public class CarreteraTerra extends AccesTerra implements Serializable {
     //Atributs
     private float amplada;
     //Constructor
     public CarreteraTerra(String _nom, String _accesibilitat, boolean _estat, float _longitud, float _amplada) {
-        super(_nom, "Si", _estat, _longitud);
+        super(_nom, _accesibilitat, _estat, _longitud);
         this.amplada = _amplada;
     }
 

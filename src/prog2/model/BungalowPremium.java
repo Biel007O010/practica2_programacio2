@@ -1,11 +1,13 @@
 package prog2.model;
 
-public class BungalowPremium extends Bungalow{
+import java.io.Serializable;
+
+public class BungalowPremium extends Bungalow implements Serializable {
 
     private boolean serveisExtra;
     private String codiWifi;
 
-    BungalowPremium(String nom_, String id_, String mida, int habitacions, int placesPersones,
+    BungalowPremium(String nom_, String id_, float mida, int habitacions, int placesPersones,
                     int placesParquing_, boolean terrassa_, boolean tv_, boolean aireFred_,
                     boolean serveisExtra_, String codiWifi_, boolean operatiu_, String iluminacio_){
 
