@@ -1,166 +1,93 @@
 package prog2.vista;
 
 import prog2.model.Camping;
+import prog2.model.InCamping;
 
 import java.util.Scanner;
 
-public class VistaCamping{
+public class VistaCamping {
 
-    static private enum OpcionsCamping {ALLOTJAMENTS, MANTENIMENT, ACCESSOS, SORTIR}
+    // Menú final de 13 opciones (12 + Sortir)
+    private enum OpcionsMenu {
+        MOSTRAR_NOM,
+        LLISTAR_ALLOTJAMENTS_OPERATIUS,
+        LLISTAR_ALLOTJAMENTS_NO_OPERATIUS,
+        LLISTAR_ACCESSOS_OBERTS,
+        LLISTAR_ACCESSOS_TANCATS,
+        LLISTAR_TASQUES,
+        AFEGIR_TASCA,
+        COMPLETAR_TASCA,
+        CALCUL_METRES_TERRA,
+        CALCUL_ACCESSIBILITAT,
+        GUARDAR,
+        CARREGAR,
+        SORTIR
+    }
 
-    static private enum OpcioALL {OPERATIUS, NO_OPERATIUS, MENU_ANTERIOR}
-
-    static private enum OpcioMANT {LLISTATASQUES, AFEGIRTASQUESMANT, COMPLETARTASQUES, MENU_ANTERIOR}
-
-    static private enum OpcioACC {LLISTAACCESSOS, CALCULARDISPONIBILITAT, TERRATOTAL, MENU_ANTERIOR}
-
-
-    static private String[] MenuCampingDesc={
-            "Allotjaments.",
-            "Manteniment.",
-            "Accesos.",
-            "Sortit."
-    };
-
-    static private String[] OpcioALLDesc={
-            "Llistar allotjaments operatius.",
-            "Llistar allotjaments no operatius.",
-            "Menu anterior."
-    };
-
-    static private String[] OpcioMANTDesc={
-            "Listar tasques de manteniment.",
-            "Afegir tasques de manteniment.",
-            "Completar tasques de manteniment.",
-            "Menu anterior."
-    };
-
-    static private String[] OpcioACCDesc={
-            "Llistar accesos.",
-            "Calcular accesos no accessibles.",
-            "Calcular metres de terra total.",
-            "Menu anterior"
+    private static final String[] descripcions = {
+            "Mostrar el nom del càmping",
+            "Llistar allotjaments operatius",
+            "Llistar allotjaments no operatius",
+            "Llistar accessos oberts",
+            "Llistar accessos tancats",
+            "Llistar totes les tasques de manteniment",
+            "Afegir una nova tasca de manteniment",
+            "Completar una tasca de manteniment",
+            "Calcular metres totals de camins de terra",
+            "Calcular accessos no accessibles",
+            "Guardar dade",
+            "Carregar dades",
+            "Sortir"
     };
 
     private Camping camping;
 
     public VistaCamping(String _nom) throws ExcepcioCamping {
-
         this.camping = new Camping(_nom);
         this.camping.inicialitzaDadesCamping();
     }
 
     public void gestioCamping() throws ExcepcioCamping {
-
         Scanner sc = new Scanner(System.in);
+        Menu<OpcionsMenu> menuCamping = new Menu<>("Menú Càmping Green", OpcionsMenu.values());
+        menuCamping.setDescripcions(descripcions);
 
-        Menu<OpcionsCamping> menuCamping = new Menu<>("Menu Principal",OpcionsCamping.values());
-
-        menuCamping.setDescripcions(MenuCampingDesc);
-
-        OpcionsCamping opcio = null;
-
-        do{
+        OpcionsMenu opcio;
+        do {
             menuCamping.mostrarMenu();
+            opcio = menuCamping.getOpcio(sc);
 
-            opcio=menuCamping.getOpcio(sc);
-
-            switch (opcio){
-                case ALLOTJAMENTS:
-                    System.out.println("Gestió de allotjaments:");
-                    gestioALL(sc);
-                    break;
-
-                case MANTENIMENT:
-                    System.out.println("Gestió de tasques de manteniment:");
-                    gestioMANT(sc);
-                    break;
-
-                case ACCESSOS:
-                    System.out.println("Gestió d'accessos:");
-                    gestioACC(sc);
-                    break;
-
-                case SORTIR:
-                    System.out.println("Tancant el programa...");
-                    break;
-            }
-
-        } while(opcio!=OpcionsCamping.SORTIR);
-    }
-
-    private void gestioALL(Scanner sc){
-
-        Menu<OpcioALL> menuALL=new Menu<OpcioALL>("Gestió de allotjaments", OpcioALL.values());
-
-        menuALL.setDescripcions(OpcioALLDesc);
-
-        OpcioALL opcio = null;
-        do {
-            menuALL.mostrarMenu();
-            opcio=menuALL.getOpcio(sc);
-
-            switch(opcio) {
-                case OPERATIUS:
-                    System.out.println("Allotjaments operatius:");
-
-                    try {
+            try {
+                switch (opcio) {
+                    case MOSTRAR_NOM:
+                        System.out.println("Nom del càmping: " + camping.getNomCamping());
+                        break;
+                    case LLISTAR_ALLOTJAMENTS_OPERATIUS:
                         System.out.println(camping.llistarAllotjaments("Operatiu"));
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
-
-                    break;
-                case NO_OPERATIUS:
-                    System.out.println("Allotjaments no operatius:");
-                    try {
+                        break;
+                    case LLISTAR_ALLOTJAMENTS_NO_OPERATIUS:
                         System.out.println(camping.llistarAllotjaments("No operatiu"));
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
-
-                    break;
-                case MENU_ANTERIOR:
-                    System.out.println("Menu anterior");
-                    break;
-            }
-
-        } while(opcio!= OpcioALL.MENU_ANTERIOR);
-    }
-
-    private void gestioMANT(Scanner sc){
-
-        Menu<OpcioMANT> menuMant=new Menu<OpcioMANT>("Gestió del manteniment:", OpcioMANT.values());
-
-        menuMant.setDescripcions(OpcioMANTDesc);
-
-        OpcioMANT opcio = null;
-        do {
-            menuMant.mostrarMenu();
-            Scanner input = new Scanner(System.in);
-            opcio=menuMant.getOpcio(sc);
-
-            switch(opcio) {
-                case LLISTATASQUES:
-                    System.out.println("Llista de tasques de manteninement:");
-                    try {
+                        break;
+                    case LLISTAR_ACCESSOS_OBERTS:
+                        System.out.println(camping.llistarAccessos("Oberts"));
+                        break;
+                    case LLISTAR_ACCESSOS_TANCATS:
+                        System.out.println(camping.llistarAccessos("Tancats"));
+                        break;
+                    case LLISTAR_TASQUES:
                         System.out.println(camping.llistarTasquesManteniment());
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
+                        break;
+                    case AFEGIR_TASCA:
+                        System.out.println("Afegir tasca:");
+                        Scanner input = new Scanner(System.in);
+                        int numId, dies;
+                        String tipus, idALL, data;
 
-                }
-                    break;
-                case AFEGIRTASQUESMANT:
-                    System.out.println("Afegir tasca:");
-
-                    int numId, dies;
-                    String tipus, idALL, data;
-
-                    try {
                         System.out.println("Id del allotjament que vols afegir la tasca: ");
                         idALL = input.nextLine();
                         System.out.println("Num identificador de la tasca: ");
                         numId = input.nextInt();
+                        input.nextLine();
                         System.out.println("Tipus de tasca: ");
                         tipus = input.nextLine();
                         System.out.println("Data: ");
@@ -169,67 +96,33 @@ public class VistaCamping{
                         dies = input.nextInt();
 
                         camping.afegirTascaManteniment(numId, tipus, idALL, data, dies);
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
-
-                    break;
-                case COMPLETARTASQUES:
-                    System.out.println("Digeu el num de la tasca que vols completar:");
-
-                    try {
-                        int num = input.nextInt();
-                        camping.completarTascaManteniment(num);
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case MENU_ANTERIOR:
-                    System.out.println("Tornant...");
-                    break;
+                        break;
+                    case COMPLETAR_TASCA:
+                        System.out.println("Digeu el num de la tasca que vols completar:");
+                        int n = sc.nextInt(); sc.nextLine();
+                        camping.completarTascaManteniment(n);
+                        break;
+                    case CALCUL_METRES_TERRA:
+                        System.out.println("Hi han " + camping.calculaMetresTerra() + " metres de terra.");
+                        break;
+                    case CALCUL_ACCESSIBILITAT:
+                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no disponibles.");
+                        break;
+                    case GUARDAR:
+                        System.out.println("Poseu la direcció del fitxer que vols guardar: ");
+                        camping.save(sc.nextLine());
+                        break;
+                    case CARREGAR:
+                        System.out.println("Poseu la direcció del fitxer que vols carregar: ");
+                        this.camping = InCamping.load(sc.nextLine());
+                        break;
+                    case SORTIR:
+                        System.out.println("Tancant el programa...");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-
-        } while(opcio!= OpcioMANT.MENU_ANTERIOR);
+        } while (opcio != OpcionsMenu.SORTIR);
     }
-
-    private void gestioACC(Scanner sc){
-
-        Menu<OpcioACC> menu=new Menu<OpcioACC>("Gestió dels accesos", OpcioACC.values());
-
-        menu.setDescripcions(OpcioACCDesc);
-
-        OpcioACC opcio = null;
-        do {
-            menu.mostrarMenu();
-            opcio=menu.getOpcio(sc);
-
-            switch(opcio) {
-                case LLISTAACCESSOS:
-                    System.out.println("Quins accesos vols llistar? (Oberts/Tancats)");
-                    String tipus = sc.nextLine();
-
-                    try {
-                        System.out.println(camping.llistarAccessos(tipus));
-                    } catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case CALCULARDISPONIBILITAT:
-                    System.out.println("Calculant...");
-                    System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no disponibles.");
-
-                    break;
-                case TERRATOTAL:
-                    System.out.println("Calculant...");
-                    System.out.println("Hi han " +  camping.calculaMetresTerra() + " metres de terra.");
-
-                    break;
-                case MENU_ANTERIOR:
-                    System.out.println("Tornant...");
-                    break;
-            }
-
-        } while(opcio!= OpcioACC.MENU_ANTERIOR);
-    }
-
 }
