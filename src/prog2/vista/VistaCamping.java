@@ -216,19 +216,13 @@ public class VistaCamping{
                     break;
                 case CALCULARDISPONIBILITAT:
                     System.out.println("Calculant...");
-                    try {
-                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no disponibles.");
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no disponibles.");
+
                     break;
                 case TERRATOTAL:
                     System.out.println("Calculant...");
-                    try {
-                        System.out.println("Hi han " +  camping.calculaMetresTerra() + " metres de terra.");
-                    }catch (ExcepcioCamping e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Hi han " +  camping.calculaMetresTerra() + " metres de terra.");
+
                     break;
                 case MENU_ANTERIOR:
                     System.out.println("Tornant...");

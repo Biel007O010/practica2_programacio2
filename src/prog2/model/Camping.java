@@ -61,13 +61,23 @@ public class Camping implements InCamping, Serializable {
     }
 
     @Override
-    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
-        return this.accessos.calculaAccessosNoAccessibles();
+    public int calculaAccessosNoAccessibles(){
+        try {
+            return this.accessos.calculaAccessosNoAccessibles();
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     @Override
-    public float calculaMetresTerra() throws ExcepcioCamping {
-        return this.accessos.calculaMetresTerra();
+    public float calculaMetresTerra(){
+        try {
+            return this.accessos.calculaMetresTerra();
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     @Override
