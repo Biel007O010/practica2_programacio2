@@ -5,10 +5,9 @@ import prog2.model.InCamping;
 
 import java.util.Scanner;
 
-public class VistaCamping {
+public class VistaCamping{
 
-    // Menú final de 13 opciones (12 + Sortir)
-    private enum OpcionsMenu {
+    private enum OpcionsMenu{
         MOSTRAR_NOM,
         LLISTAR_ALLOTJAMENTS_OPERATIUS,
         LLISTAR_ALLOTJAMENTS_NO_OPERATIUS,
@@ -24,7 +23,7 @@ public class VistaCamping {
         SORTIR
     }
 
-    private static final String[] descripcions = {
+    private static final String[]descripcions ={
             "Mostrar el nom del càmping",
             "Llistar allotjaments operatius",
             "Llistar allotjaments no operatius",
@@ -42,23 +41,23 @@ public class VistaCamping {
 
     private Camping camping;
 
-    public VistaCamping(String _nom) throws ExcepcioCamping {
+    public VistaCamping(String _nom) throws ExcepcioCamping{
         this.camping = new Camping(_nom);
         this.camping.inicialitzaDadesCamping();
     }
 
-    public void gestioCamping() throws ExcepcioCamping {
+    public void gestioCamping() throws ExcepcioCamping{
         Scanner sc = new Scanner(System.in);
-        Menu<OpcionsMenu> menuCamping = new Menu<>("Menú Càmping Green", OpcionsMenu.values());
+        Menu<OpcionsMenu> menuCamping = new Menu<>("Menú de gestió", OpcionsMenu.values());
         menuCamping.setDescripcions(descripcions);
 
         OpcionsMenu opcio;
-        do {
+        do{
             menuCamping.mostrarMenu();
             opcio = menuCamping.getOpcio(sc);
 
-            try {
-                switch (opcio) {
+            try{
+                switch (opcio){
                     case MOSTRAR_NOM:
                         System.out.println("Nom del càmping: " + camping.getNomCamping());
                         break;
@@ -120,9 +119,9 @@ public class VistaCamping {
                         System.out.println("Tancant el programa...");
                         break;
                 }
-            } catch (Exception e) {
+            }catch (Exception e){
                 System.out.println(e.getMessage());
             }
-        } while (opcio != OpcionsMenu.SORTIR);
+        }while (opcio != OpcionsMenu.SORTIR);
     }
 }
