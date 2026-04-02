@@ -86,5 +86,5 @@ public interface InCamping {
     /**
      * Inicialitza les dades del càmping amb valors predeterminats.
      */
-    void inicialitzaDadesCamping() throws ExcepcioCamping;
+    void inicialitzaDadesCamping();
 }

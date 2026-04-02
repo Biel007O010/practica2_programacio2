@@ -99,7 +99,7 @@ public class Camping implements InCamping, Serializable {
     }
 
     @Override
-    public void inicialitzaDadesCamping() throws ExcepcioCamping {
+    public void inicialitzaDadesCamping(){
 
         accessos.buidar();
 
@@ -171,13 +171,21 @@ public class Camping implements InCamping, Serializable {
         boolean connexioElectrica = true;
 
         Parcela ALL1 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
-        allotjaments.afegirAllotjament(ALL1);
+        try {
+            allotjaments.afegirAllotjament(ALL1);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
         nom = "Parcel·la Sud";
         idAllotjament = "ALL2";
 
         Parcela ALL2 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
-        allotjaments.afegirAllotjament(ALL2);
+        try {
+            allotjaments.afegirAllotjament(ALL2);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
         // Afegir bungalows:
         //------------------------------
@@ -193,7 +201,11 @@ public class Camping implements InCamping, Serializable {
         boolean aireFred = true;
 
         Bungalow ALL3 = new Bungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, true, "100%");
-        allotjaments.afegirAllotjament(ALL3);
+        try {
+            allotjaments.afegirAllotjament(ALL3);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
 
         // Afegir bungalows premium:
@@ -211,7 +223,11 @@ public class Camping implements InCamping, Serializable {
         String codiWifi = "CampingDelMarBP1";
 
         BungalowPremium ALL4 = new BungalowPremium(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi, true, "100%");
-        allotjaments.afegirAllotjament(ALL4);
+        try {
+            allotjaments.afegirAllotjament(ALL4);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
         // Afegir Glamping:
         //------------------------------
@@ -225,7 +241,11 @@ public class Camping implements InCamping, Serializable {
         boolean casaMascota = true;
 
         Glamping ALL5 = new Glamping(nom, idAllotjament, mida, habitacions, placesPersones, material, casaMascota, true, "100%");
-        allotjaments.afegirAllotjament(ALL5);
+        try {
+            allotjaments.afegirAllotjament(ALL5);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
 
         // Afegir Mobil-Home:
@@ -239,7 +259,11 @@ public class Camping implements InCamping, Serializable {
         boolean terrassaBarbacoa = true;
 
         MobilHome ALL6 = new MobilHome(nom, idAllotjament, mida, habitacions, placesPersones, terrassaBarbacoa, true, "100%");
-        allotjaments.afegirAllotjament(ALL6);
+        try {
+            allotjaments.afegirAllotjament(ALL6);
+        } catch (ExcepcioCamping e) {
+            System.out.println(e.getMessage());
+        }
 
         /* Accés */
         Acc1.afegirAllotjament(ALL1); Acc1.afegirAllotjament(ALL2);
