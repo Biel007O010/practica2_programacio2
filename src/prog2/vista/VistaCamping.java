@@ -3,6 +3,7 @@ package prog2.vista;
 import prog2.model.Camping;
 import prog2.model.InCamping;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class VistaCamping{
@@ -79,29 +80,38 @@ public class VistaCamping{
                         break;
                     case AFEGIR_TASCA:
                         System.out.println("Afegir tasca:");
-                        Scanner input = new Scanner(System.in);
                         int numId, dies;
                         String tipus, idALL, data;
+                        try {
+                            System.out.println("Id del allotjament que vols afegir la tasca: ");
+                            idALL = sc.nextLine();
+                            System.out.println("Num identificador de la tasca: ");
+                            numId = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Tipus de tasca: ");
+                            tipus = sc.nextLine();
+                            System.out.println("Data: ");
+                            data = sc.nextLine();
+                            System.out.println("Durada de la tasca: ");
+                            dies = sc.nextInt();
+                            sc.nextLine();
 
-                        System.out.println("Id del allotjament que vols afegir la tasca: ");
-                        idALL = input.nextLine();
-                        System.out.println("Num identificador de la tasca: ");
-                        numId = input.nextInt();
-                        input.nextLine();
-                        System.out.println("Tipus de tasca: ");
-                        tipus = input.nextLine();
-                        System.out.println("Data: ");
-                        data = input.nextLine();
-                        System.out.println("Durada de la tasca: ");
-                        dies = input.nextInt();
-
-                        camping.afegirTascaManteniment(numId, tipus, idALL, data, dies);
+                            camping.afegirTascaManteniment(numId, tipus, idALL, data, dies);
+                        }catch (InputMismatchException e){
+                            System.err.println("ERROR: format incorrecte, torneu a intentar...");
+                            sc.nextLine();
+                        }
                         break;
                     case COMPLETAR_TASCA:
                         System.out.println("Digeu el num de la tasca que vols completar:");
-                        int numTasca = sc.nextInt();
-                        sc.nextLine();
-                        camping.completarTascaManteniment(numTasca);
+                        try {
+                            int numTasca = sc.nextInt();
+                            sc.nextLine();
+                            camping.completarTascaManteniment(numTasca);
+                        }catch (InputMismatchException e){
+                            System.err.println("ERROR: format incorrecte, heu de introduir un num.");
+                            sc.nextLine();
+                        }
                         break;
                     case CALCUL_ACCESSIBILITAT:
                         System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no accessibles amb vehicle.");
@@ -123,7 +133,7 @@ public class VistaCamping{
                         System.out.println("Tancant el programa...");
                         break;
                 }
-            }catch (Exception e){
+            }catch (ExcepcioCamping e){
                 System.out.println(e.getMessage());
             }
         }while (opcio != OpcionsMenu.SORTIR);
