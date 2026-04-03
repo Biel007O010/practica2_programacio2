@@ -13,10 +13,10 @@ public abstract class Acces implements InAcces, Serializable {
     private LlistaAllotjaments llista;
 
     //Constructor
-    public Acces(String _nom, boolean _accessibilitat){
+    public Acces(String _nom, boolean _estat){
         this.nom = _nom;
-        this.accessibilitat = _accessibilitat;
-        this.estat = true;
+        this.accessibilitat = isAccessibilitat();
+        this.estat = _estat;
         this.llista = new LlistaAllotjaments();
     }
     @Override

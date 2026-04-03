@@ -105,7 +105,7 @@ public class VistaCamping{
                         System.out.println("Hi han " + camping.calculaMetresTerra() + " metres de terra.");
                         break;
                     case CALCUL_ACCESSIBILITAT:
-                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no disponibles.");
+                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no accessibles.");
                         break;
                     case GUARDAR:
                         System.out.println("Poseu la direcció del fitxer que vols guardar: ");
