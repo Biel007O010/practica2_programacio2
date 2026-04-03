@@ -6,8 +6,8 @@ public class CarreteraTerra extends AccesTerra implements Serializable {
     //Atributs
     private float amplada;
     //Constructor
-    public CarreteraTerra(String _nom, String _accesibilitat, boolean _estat, float _longitud, float _amplada) {
-        super(_nom, _accesibilitat, _estat, _longitud);
+    public CarreteraTerra(String _nom, boolean _accesibilitat, float _longitud, float _amplada) {
+        super(_nom, _accesibilitat, _longitud);
         this.amplada = _amplada;
     }
 

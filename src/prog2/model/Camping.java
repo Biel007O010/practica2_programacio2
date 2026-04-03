@@ -114,57 +114,57 @@ public class Camping implements InCamping, Serializable {
         accessos.buidar();
 
         float asfalt = 200;
-        Acces Acc1 = new CamiAsfalt("A1", "No", true, asfalt);
+        Acces Acc1 = new CamiAsfalt("A1",true, asfalt);
         accessos.afegirAcces(Acc1);
 
         asfalt = 800;
         float pesMaxim = 10000;
-        Acces Acc2 = new CarreteraAsfalt("A2", "Si", true, asfalt, pesMaxim);
+        Acces Acc2 = new CarreteraAsfalt("A2",true, asfalt, pesMaxim);
         accessos.afegirAcces(Acc2);
 
         float longitud = 100;
-        Acces Acc3 = new CamiTerra("A3", "No", true, longitud);
+        Acces Acc3 = new CamiTerra("A3", true, longitud);
         accessos.afegirAcces(Acc3);
 
         longitud = 200;
         float amplada = 3;
-        Acces Acc4 = new CarreteraTerra("A4", "Si", true, longitud, amplada);
+        Acces Acc4 = new CarreteraTerra("A4", true, longitud, amplada);
         accessos.afegirAcces(Acc4);
 
         asfalt = 350;
-        Acces Acc5 = new CamiAsfalt("A5", "No", true, asfalt);
+        Acces Acc5 = new CamiAsfalt("A5", true, asfalt);
         accessos.afegirAcces(Acc5);
 
         asfalt = 800;
         pesMaxim = 12000;
-        Acces Acc6 = new CarreteraAsfalt("A6", "Si", true, asfalt, pesMaxim);
+        Acces Acc6 = new CarreteraAsfalt("A6", true, asfalt, pesMaxim);
         accessos.afegirAcces(Acc6);
 
         asfalt = 100;
-        Acces Acc7 = new CamiAsfalt("A7", "No", true, asfalt);
+        Acces Acc7 = new CamiAsfalt("A7", true, asfalt);
         accessos.afegirAcces(Acc7);
 
         asfalt = 800;
         pesMaxim = 10000;
-        Acces Acc8 = new CarreteraAsfalt("A8", "Si", true, asfalt, pesMaxim);
+        Acces Acc8 = new CarreteraAsfalt("A8", true, asfalt, pesMaxim);
         accessos.afegirAcces(Acc8);
 
         longitud = 50;
-        Acces Acc9 = new CamiTerra("A9", "No", true, longitud);
+        Acces Acc9 = new CamiTerra("A9", true, longitud);
         accessos.afegirAcces(Acc9);
 
         longitud = 400;
         amplada = 4;
-        Acces Acc10 = new CarreteraTerra("A10", "Si", true, longitud, amplada);
+        Acces Acc10 = new CarreteraTerra("A10", true, longitud, amplada);
         accessos.afegirAcces(Acc10);
 
         longitud = 80;
-        Acces Acc11 = new CamiTerra("A11", "No", true, longitud);
+        Acces Acc11 = new CamiTerra("A11", true, longitud);
         accessos.afegirAcces(Acc11);
 
         longitud = 800;
         amplada = 5;
-        Acces Acc12 = new CarreteraTerra("A12", "Si", true, longitud, amplada);
+        Acces Acc12 = new CarreteraTerra("A12", true, longitud, amplada);
         accessos.afegirAcces(Acc12);
 
 

@@ -6,8 +6,8 @@ public abstract class AccesTerra extends Acces implements Serializable {
     //Atributs
     private float longitud;
     //Constructor
-    public AccesTerra(String _nom, String _accesibilitat, boolean _estat, float _longitud){
-        super(_nom, _accesibilitat, _estat);
+    public AccesTerra(String _nom, boolean _accesibilitat, float _longitud){
+        super(_nom, _accesibilitat);
         this.longitud = _longitud;
     }
     //Getter

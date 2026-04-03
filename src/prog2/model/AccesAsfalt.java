@@ -6,8 +6,8 @@ public abstract class AccesAsfalt extends Acces implements Serializable {
     //Atributs
     private float metresQuadrats;
     //Constructor
-    public AccesAsfalt(String _nom, String _accessabilitat, boolean _estat, float metresQuadrats) {
-        super(_nom, _accessabilitat, _estat);
+    public AccesAsfalt(String _nom, boolean _accessabilitat, float metresQuadrats) {
+        super(_nom, _accessabilitat);
         this.metresQuadrats = metresQuadrats;
     }
     //Getter

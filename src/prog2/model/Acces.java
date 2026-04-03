@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public abstract class Acces implements InAcces, Serializable {
     //Atributs:
     private String nom;
-    private String accessibilitat;
+    private boolean accessibilitat;
     private boolean estat;
     private LlistaAllotjaments llista;
 
     //Constructor
-    public Acces(String _nom, String _accessibilitat, boolean _estat){
+    public Acces(String _nom, boolean _accessibilitat){
         this.nom = _nom;
         this.accessibilitat = _accessibilitat;
-        this.estat = _estat;
+        this.estat = true;
         this.llista = new LlistaAllotjaments();
     }
     @Override
@@ -58,12 +58,20 @@ public abstract class Acces implements InAcces, Serializable {
     @Override
     public String toString(){
         String e;
+        String a;
         if (this.estat){
             e = "Obert";
         }
         else{
             e = "Tancat";
         }
-        return "Nom: " + this.nom + " Accessibilitat: " + this.accessibilitat + " Estat: " + e;
+        if (this.accessibilitat){
+            a = "Accessible";
+        }
+        else{
+            a = "No accessible";
+        }
+
+        return "Nom: " + this.nom + " Accessibilitat: " + a + " Estat: " + e;
     }
 }
