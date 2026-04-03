@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class VistaCamping{
 
     private enum OpcionsMenu{
-        MOSTRAR_NOM,
+        LLISTAR_TOT_ALLOTJAMENTS,
         LLISTAR_ALLOTJAMENTS_OPERATIUS,
         LLISTAR_ALLOTJAMENTS_NO_OPERATIUS,
         LLISTAR_ACCESSOS_OBERTS,
@@ -16,27 +16,27 @@ public class VistaCamping{
         LLISTAR_TASQUES,
         AFEGIR_TASCA,
         COMPLETAR_TASCA,
-        CALCUL_METRES_TERRA,
         CALCUL_ACCESSIBILITAT,
+        CALCUL_METRES_TERRA,
         GUARDAR,
         CARREGAR,
         SORTIR
     }
 
     private static final String[]descripcions ={
-            "Mostrar el nom del càmping",
-            "Llistar allotjaments operatius",
-            "Llistar allotjaments no operatius",
-            "Llistar accessos oberts",
-            "Llistar accessos tancats",
-            "Llistar totes les tasques de manteniment",
+            "Llistar la informació de tots els allotjaments",
+            "Llistar la informació dels allotjaments operatius",
+            "Llistar la informació dels allotjaments no operatius",
+            "Llistar la informació dels accessos oberts",
+            "Llistar la informació dels accessos tancats",
+            "Llistar la informació dels les tasques de manteniment actives",
             "Afegir una nova tasca de manteniment",
             "Completar una tasca de manteniment",
-            "Calcular metres totals de camins de terra",
-            "Calcular accessos no accessibles",
-            "Guardar dade",
-            "Carregar dades",
-            "Sortir"
+            "Calcular i mostrar els accessos no accessibles amb vehicle",
+            "Calcular i mostrar els metres totals de camins de terra",
+            "Guardar Càmping",
+            "Recuperar Càmping",
+            "Sortir de l'aplicació"
     };
 
     private Camping camping;
@@ -58,8 +58,9 @@ public class VistaCamping{
 
             try{
                 switch (opcio){
-                    case MOSTRAR_NOM:
-                        System.out.println("Nom del càmping: " + camping.getNomCamping());
+                    case LLISTAR_TOT_ALLOTJAMENTS:
+                        System.out.println(camping.llistarAllotjaments("Operatiu"));
+                        System.out.println(camping.llistarAllotjaments("No operatiu"));
                         break;
                     case LLISTAR_ALLOTJAMENTS_OPERATIUS:
                         System.out.println(camping.llistarAllotjaments("Operatiu"));
@@ -102,11 +103,11 @@ public class VistaCamping{
                         sc.nextLine();
                         camping.completarTascaManteniment(numTasca);
                         break;
+                    case CALCUL_ACCESSIBILITAT:
+                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no accessibles amb vehicle.");
+                        break;
                     case CALCUL_METRES_TERRA:
                         System.out.println("Hi han " + camping.calculaMetresTerra() + " metres de terra.");
-                        break;
-                    case CALCUL_ACCESSIBILITAT:
-                        System.out.println("Hi han " + camping.calculaAccessosNoAccessibles() + " accessos no accessibles.");
                         break;
                     case GUARDAR:
                         System.out.println("Poseu la direcció del fitxer que vols guardar: ");
