@@ -98,8 +98,9 @@ public class VistaCamping{
                         break;
                     case COMPLETAR_TASCA:
                         System.out.println("Digeu el num de la tasca que vols completar:");
-                        int n = sc.nextInt(); sc.nextLine();
-                        camping.completarTascaManteniment(n);
+                        int numTasca = sc.nextInt();
+                        sc.nextLine();
+                        camping.completarTascaManteniment(numTasca);
                         break;
                     case CALCUL_METRES_TERRA:
                         System.out.println("Hi han " + camping.calculaMetresTerra() + " metres de terra.");
@@ -109,11 +110,13 @@ public class VistaCamping{
                         break;
                     case GUARDAR:
                         System.out.println("Poseu la direcció del fitxer que vols guardar: ");
-                        camping.save(sc.nextLine());
+                        String desti = sc.nextLine();
+                        camping.save(desti);
                         break;
                     case CARREGAR:
                         System.out.println("Poseu la direcció del fitxer que vols carregar: ");
-                        this.camping = InCamping.load(sc.nextLine());
+                        String origen = sc.next();
+                        this.camping = Camping.load(origen);
                         break;
                     case SORTIR:
                         System.out.println("Tancant el programa...");

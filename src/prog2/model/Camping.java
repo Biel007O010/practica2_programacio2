@@ -93,7 +93,7 @@ public class Camping implements InCamping, Serializable {
         }
     }
 
-    static Camping load(String camiOrigen) throws ExcepcioCamping {
+    public static Camping load(String camiOrigen) throws ExcepcioCamping {
         Camping copiaDades;
         try{
             FileInputStream fis = new FileInputStream(camiOrigen);
@@ -103,7 +103,7 @@ public class Camping implements InCamping, Serializable {
             objecte.close();
         }
         catch (Exception e) {
-            throw new UnsupportedOperationException("Error: " + e.getMessage());
+            throw new ExcepcioCamping("Error: " + e.getMessage());
         }
         return copiaDades;
     }
