@@ -5,7 +5,9 @@ import prog2.vista.ExcepcioCamping;
 import java.io.*;
 
 public class Camping implements InCamping, Serializable {
-    //Atributs
+    /**
+     * Atributs
+     */
     private String nom;
     private LlistaTasquesManteniment tasquesManteniment;
     private LlistaAllotjaments allotjaments;

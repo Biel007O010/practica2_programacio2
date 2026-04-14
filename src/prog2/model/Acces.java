@@ -5,14 +5,23 @@ import prog2.vista.ExcepcioCamping;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Implementacio de la clase Accés.
+ */
 public abstract class Acces implements InAcces, Serializable {
-    //Atributs:
+    /**
+     * Atributs
+     */
     private String nom;
     private boolean accessibilitat;
     private boolean estat;
     private LlistaAllotjaments llista;
 
-    //Constructor
+    /**
+     * Constructor de la classe Acces
+     * @param _nom nom de l'accés
+     * @param _estat estat operatiu de l'accès
+     */
     public Acces(String _nom, boolean _estat){
         this.nom = _nom;
         this.accessibilitat = isAccessibilitat();
@@ -27,12 +36,10 @@ public abstract class Acces implements InAcces, Serializable {
             System.out.println(e.getMessage());
         }
     }
-
     @Override
     public void tancarAcces() {
         this.estat = false;
     }
-
     @Override
     public void obrirAcces() {
         this.estat = true;
@@ -55,6 +62,11 @@ public abstract class Acces implements InAcces, Serializable {
     public LlistaAllotjaments getAAllotjaments() {
         return this.llista;
     }
+
+    /**
+     * Metode per imprimir informació de l'accés
+     * @return
+     */
     @Override
     public String toString(){
         String e;

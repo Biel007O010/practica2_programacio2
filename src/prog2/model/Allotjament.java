@@ -1,7 +1,9 @@
 package prog2.model;
 
 import java.io.Serializable;public abstract class Allotjament implements InAllotjament, Serializable{
-    //Atributs:
+    /**
+     * Atributs
+     */
     private String nom;
     private String id;
     private long estadaMinimaALTA;
@@ -9,7 +11,15 @@ import java.io.Serializable;public abstract class Allotjament implements InAllot
     private boolean operatiu;
     private String iluminacio;
 
-    //Constructor:
+    /**
+     * Constructor de la clase.
+     * @param nom nom de l'allotjament
+     * @param id id de l'allotjament
+     * @param estadaMinimaALTA_ estada mínima alta
+     * @param estadaMinimaBAIXA_ estada minima baixa
+     * @param operatiu_ estat de l'allotjament
+     * @param iluminacio_ porcentatge de l'allotjament
+     */
     public Allotjament(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, boolean operatiu_, String iluminacio_){
         this.nom = nom;
         this.id = id;
@@ -67,10 +77,19 @@ import java.io.Serializable;public abstract class Allotjament implements InAllot
         this.iluminacio = "100%";
     }
 
+    /**
+     * Metode que retorna l'estat de l'allotjament
+     * @return boolean
+     */
+
     public boolean isOperatiu(){
         return operatiu;
     }
 
+    /**
+     * Metode que retorna el porcentatge de iluminació de l'allotjament
+     * @return String
+     */
     public String getIluminacio(){
         return iluminacio;
     }
